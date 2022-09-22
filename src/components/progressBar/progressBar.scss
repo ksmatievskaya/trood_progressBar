@@ -1,9 +1,14 @@
 .progress {
-    margin: 40px auto 100px auto;
     display: flex;
-    justify-content: center;
-    height: 23px;
-    width: 650px;
+    flex-direction: column;
+    align-items: center;
+    &_arr {
+        margin: 40px auto 100px auto;
+        display: flex;
+        justify-content: center;
+        height: 23px;
+        width: 650px;
+    }
 
     &_item {
         margin-right: 3px;
@@ -12,5 +17,21 @@
         background-color: red;
         border-radius: 5px;
     }
+
+    &_btn {
+        width: 170px;
+        height: 30px;
+        margin-top: 20px;
+        margin-right: 30px;
+        border: none;
+        background-color: black;
+        color: #fff;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: #121212;
+        }
+    }
+    
     
 }

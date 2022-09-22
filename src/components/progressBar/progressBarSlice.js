@@ -1,9 +1,9 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
+
 const progressAdapter = createEntityAdapter();
 
 const initialState = progressAdapter.getInitialState({
-    tickets: [],
     height: null,
     width: null
 })
@@ -11,9 +11,20 @@ const initialState = progressAdapter.getInitialState({
 const progressSlice = createSlice({
     name: 'progress',
     initialState, 
-    reducers: {}
+    reducers: {
+        itemAdded: (state, action) => {
+            progressAdapter.addOne(state, action.payload);
+        },
+        itemsReset: (state, action) => {
+            progressAdapter.removeAll(state, action.payload)
+        }
+    }
 })
 
-const {reducer} = progressSlice;
+const {reducer, actions} = progressSlice;
+
+export const {itemAdded, itemsReset} = actions;
+
+export const ItemsSelector = progressAdapter.getSelectors(state => state.items);
 
 export default reducer;
