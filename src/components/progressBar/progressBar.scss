@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     &_arr {
-        margin: 40px auto 100px auto;
+        margin: 40px auto 20px auto;
         display: flex;
         justify-content: center;
         height: 23px;
@@ -32,6 +32,23 @@
             background-color: #121212;
         }
     }
+
+    &_legend {
+        display: flex;
+        justify-content: center;
+    }
+
+    &_legendItem {
+        margin-right: 10px;
+    }
     
+    &_legendCircle {
+       display: inline-block;
+       width: 15px;
+       height: 15px;
+       border-radius: 100%;
+       margin-right: 3px;
+       margin-top: 5px;
+    }
     
 }

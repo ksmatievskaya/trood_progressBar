@@ -10,20 +10,21 @@ const Form = () => {
     const [itemName, setItemName] = useState('');
     const [itemVal, setItemVal] = useState('');
     const dispatch = useDispatch();
+    const valArr = [];
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
         const newItem = {
             id: uuidv4(),
             name: itemName,
-            value: itemVal,
+            value: Number(itemVal),
             color: getRndColor()
         }
-
         dispatch(itemAdded(newItem));
-
+    
         setItemName('');
         setItemVal('');
+
     }
 
 

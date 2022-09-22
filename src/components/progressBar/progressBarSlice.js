@@ -8,6 +8,7 @@ const initialState = progressAdapter.getInitialState({
     width: null
 })
 
+
 const progressSlice = createSlice({
     name: 'progress',
     initialState, 
@@ -23,8 +24,8 @@ const progressSlice = createSlice({
 
 const {reducer, actions} = progressSlice;
 
-export const {itemAdded, itemsReset} = actions;
+export const {itemAdded, itemsReset, valueCount} = actions;
 
-export const ItemsSelector = progressAdapter.getSelectors(state => state.items);
+export const ItemsSelector = progressAdapter.getSelectors(state => state.progress);
 
 export default reducer;
