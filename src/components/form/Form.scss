@@ -12,6 +12,7 @@
             margin: 10px auto;
     
             input {
+                width: 150px;
                 height: 20px;
                 border-radius: 5px;
             }
@@ -30,6 +31,10 @@
             &:hover {
                 background-color: #121212;
             }
+        }
+
+        &_info {
+            font-size: 10px;
         }
     }
 }

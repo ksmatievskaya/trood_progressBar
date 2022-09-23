@@ -23,7 +23,6 @@ const Form = () => {
             color: getRndColor()
         }
         dispatch(itemAdded(newItem));
-    
         setItemName('');
         setItemVal('');
     }
@@ -41,23 +40,27 @@ const Form = () => {
         setBarHeight('');
     }
 
-
     return (
         <div className='forms'>
             <form action="" method="POST" className="form" onSubmit={onSubmitHandlerProgress}>
                 <div className='form_input'>
-                    Name: <input type='text'
+                    Name* : <input type='text'
                                  name='name'
                                  id='name'
+                                 required
                                  value={itemName}
                                  onChange={(e) => setItemName(e.target.value)}/>
                 </div>
                 <div className='form_input'>
-                    Value: <input type='text'
+                    Value* : <input type='text'
                                  name='val'
                                  id='val'
+                                 required
+                                 pattern="[0-9]*" 
+                                 inputmode="numeric"
                                  value={itemVal}
                                  onChange={(e) => setItemVal(e.target.value)}/>
+                                 <div className='form_info'>Only numbers</div>
                 </div>
                 <button type='submit' className='form_btn'>Add!</button>
             </form>
@@ -71,11 +74,14 @@ const Form = () => {
                                              onChange={(e) => setBarHeight(e.target.value)}/>
                 </div>
                 <div className='form_input'>
-                    Bar line width: <input type='text'
+                    Bar line max-width: <input type='number'
+                                            min='100'
+                                            max='1400'
                                              name='count'
                                              id='width'
                                              value={barWidth}
                                              onChange={(e) => setBarWidth(e.target.value)}/>
+                                             <div className='form_info'>Only numbers from 100 to 1400</div>
                 </div>
                 <button type='submit' className='form_btn'>Set!</button>
             </form>
