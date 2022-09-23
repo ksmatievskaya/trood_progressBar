@@ -1,12 +1,13 @@
 import './progressBar.scss';
 import { useSelector } from 'react-redux';
 import {ItemsSelector, itemsReset} from './progressBarSlice';
+import {sizeSelector} from './sizeSlice';
 import { useDispatch } from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
 
 const ProgressBar = () => {
     const items = useSelector(ItemsSelector.selectAll);
-    const progressArr= [];
+    const size = useSelector(sizeSelector.selectAll);
     const dispatch = useDispatch();
     const valArr = [];
     let valCount = 0;
@@ -50,7 +51,7 @@ const ProgressBar = () => {
 
         for(let i = 0; i < items.length; i++) {
             const barArr = []; 
-            const colorWidth = (items[i].value / valCount * 100) * 650 / 100;
+            const colorWidth = (items[i].value / valCount * 100) * size[0].width / 100;
             for(let j = 0; j < colorWidth / 15; j++) {
                 barArr.push(<div className="progress_item" style={{background: items[i].color}} key={uuidv4()}></div>)
             }
@@ -61,7 +62,7 @@ const ProgressBar = () => {
 
     return (
         <div className='progress'>
-            <div className='progress_arr'>
+            <div className='progress_arr' style={{width: `${size[0].width}px`, height: `${size[0].height}px`}}>
                 {colorsArr}
             </div>
             <div className='progress_legend'>

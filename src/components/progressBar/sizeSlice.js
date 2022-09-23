@@ -6,8 +6,13 @@ const initialState = sizeAdapter.getInitialState();
 const sizeSlice = createSlice({
     name: 'size',
     initialState,
-    reducers: {}
+    reducers: {
+        sizeAdded: sizeAdapter.setOne
+        
+    }
 })
 
 const {reducer, actions} = sizeSlice;
+export const {sizeAdded} = actions;
+export const sizeSelector = sizeAdapter.getSelectors(state => state.size)
 export default reducer;
