@@ -2,9 +2,7 @@ import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
 
 const progressAdapter = createEntityAdapter();
-
 const initialState = progressAdapter.getInitialState();
-
 
 const progressSlice = createSlice({
     name: 'progress',
