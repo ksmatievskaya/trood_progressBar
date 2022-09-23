@@ -10,11 +10,14 @@
         width: 650px;
     }
 
+    &_color {
+        display: flex;
+    }
+
     &_item {
         margin-right: 3px;
-        width: 100%;
+        width: 15px;
         height: 100%;
-        background-color: red;
         border-radius: 5px;
     }
 
@@ -49,6 +52,11 @@
        border-radius: 100%;
        margin-right: 3px;
        margin-top: 5px;
+    }
+
+    &_header {
+        display: flex;
+        justify-content: center;
     }
     
 }

@@ -2,7 +2,7 @@ import './progressBar.scss';
 import { useSelector } from 'react-redux';
 import {ItemsSelector, itemsReset} from './progressBarSlice';
 import { useDispatch } from 'react-redux';
-
+import {v4 as uuidv4} from 'uuid';
 
 const ProgressBar = () => {
     const items = useSelector(ItemsSelector.selectAll);
@@ -10,7 +10,6 @@ const ProgressBar = () => {
     const dispatch = useDispatch();
     const valArr = [];
     let valCount = 0;
-    const {value} = items;
 
     // counting sum of values of each item
     items.forEach(({value}) => {
@@ -43,15 +42,27 @@ const ProgressBar = () => {
 
     const legendElements = renderItems(items);
 
-    // cycle for rendering small pieces in progress bar
-    for(let i = 0; i < 62; i++) {
-        progressArr.push(<div className="progress_item" key={i}></div>)
-    }
+        // rendering progressBar depending on values
+        const colorsArr = [];
+        if (items.length === 0) {
+            return <h5 className='progress_header'>Enter some values</h5>
+        }
+
+        for(let i = 0; i < items.length; i++) {
+            const barArr = []; 
+            const colorWidth = (items[i].value / valCount * 100) * 650 / 100;
+            for(let j = 0; j < colorWidth / 15; j++) {
+                barArr.push(<div className="progress_item" style={{background: items[i].color}} key={uuidv4()}></div>)
+            }
+    
+            colorsArr.push(<div className='progress_color' key={i} style={{width: `${colorWidth}px`}}>{barArr}</div>) 
+        }
+
 
     return (
         <div className='progress'>
-            <div className="progress_arr">
-            {progressArr}
+            <div className='progress_arr'>
+                {colorsArr}
             </div>
             <div className='progress_legend'>
                 {legendElements}
