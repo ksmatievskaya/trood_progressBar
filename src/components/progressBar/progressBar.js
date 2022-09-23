@@ -1,9 +1,10 @@
 import './progressBar.scss';
 import { useSelector } from 'react-redux';
 import {ItemsSelector, itemsReset} from './progressBarSlice';
-import {sizeSelector} from './sizeSlice';
+import {sizeSelector, sizeAdded} from './sizeSlice';
 import { useDispatch } from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
+import { useEffect } from 'react';
 
 const ProgressBar = () => {
     const items = useSelector(ItemsSelector.selectAll);
@@ -11,6 +12,14 @@ const ProgressBar = () => {
     const dispatch = useDispatch();
     const valArr = [];
     let valCount = 0;
+
+    useEffect(() => {
+        const initialSize = {
+            width: 650,
+            height: 23
+        }
+        dispatch(sizeAdded(initialSize))
+    }, [])
 
     // counting sum of values of each item
     items.forEach(({value}) => {
@@ -43,10 +52,20 @@ const ProgressBar = () => {
 
     const legendElements = renderItems(items);
 
+
         // rendering progressBar depending on values
         const colorsArr = [];
         if (items.length === 0) {
-            return <h5 className='progress_header'>Enter some values</h5>
+            return(
+                <>
+                    <div className='progress_arr' style={{width: `650px`, height: `23px`}}>
+                    <div className='progress_color' style={{width: `100%`, height: '100%'}}>
+                        <div className="progress_item" style={{background: 'linear-gradient(to right, white, black)', width: `100%`, height: '100%'}}></div>
+                    </div>
+                    </div>
+                    <h5 className='progress_header'>Enter some values</h5>
+                </>
+            ) 
         }
 
         for(let i = 0; i < items.length; i++) {
@@ -56,8 +75,10 @@ const ProgressBar = () => {
                 barArr.push(<div className="progress_item" style={{background: items[i].color}} key={uuidv4()}></div>)
             }
     
-            colorsArr.push(<div className='progress_color' key={i} style={{width: `${colorWidth}px`}}>{barArr}</div>) 
+            colorsArr.push(<div className='progress_color' key={i} style={{width: `${size[0].width}px`}}>{barArr}</div>) 
         }
+
+
 
 
     return (
