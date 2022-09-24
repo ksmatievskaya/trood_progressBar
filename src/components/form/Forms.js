@@ -68,10 +68,12 @@ const Form = () => {
             <form action="" method='POST' className='form' onSubmit={onSubmitHandlerSize}>
                 <div className='form_input'>
                     Bar line height: <input type='text'
+                                            min='10'
                                              name='name'
                                              id='height'
                                              value={barHeight}
                                              onChange={(e) => setBarHeight(e.target.value)}/>
+                                             <div className='form_info'>Only numbers from 10</div>
                 </div>
                 <div className='form_input'>
                     Bar line max-width: <input type='number'

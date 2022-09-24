@@ -1,6 +1,8 @@
 # Progress Bar
 In this app you can type values and get them displayed on progress bar.
 
+[Click to see a demo](https://trood-progress-bar.vercel.app/)
+
 React, Redux, JavaScript, SCSS, HTML, Webpack
 
 ## Description
