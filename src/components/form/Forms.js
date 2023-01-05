@@ -50,6 +50,7 @@ const Form = () => {
                                  required
                                  value={itemName}
                                  onChange={(e) => setItemName(e.target.value)}/>
+                                 <div className='form_info'>Any symbols</div>
                 </div>
                 <div className='form_input'>
                     Value* : <input type='text'
